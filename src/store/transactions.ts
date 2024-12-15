@@ -19,6 +19,7 @@ export type CreateTransactionInput = Omit<
   Transaction,
   'id' | 'createdAt' | 'updatedAt'
 >;
+export type ImportTransactionInput = Transaction;
 
 export type Transactions = Record<string, Transaction>;
 
@@ -28,6 +29,15 @@ const transactionsSlice = createSlice({
   name: 'transactions',
   initialState,
   reducers: {
+    importTransaction(state, action: PayloadAction<ImportTransactionInput>) {
+      return produce(state, (draft) => {
+        if (draft[action.payload.id]) {
+          return;
+        }
+
+        draft[action.payload.id] = action.payload;
+      });
+    },
     createTransaction(state, action: PayloadAction<CreateTransactionInput>) {
       return produce(state, (draft) => {
         const id = uuidv1();
@@ -78,6 +88,7 @@ export const {
   createTransaction: createTransactionAction,
   editTransaction: editTransactionAction,
   deleteTransaction: deleteTransactionAction,
+  importTransaction: importTransactionAction,
 } = transactionsSlice.actions;
 
 export default transactionsSlice.reducer;
