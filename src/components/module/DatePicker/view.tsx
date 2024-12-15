@@ -8,6 +8,7 @@ import { Calendar } from 'react-native-calendars';
 import eachDayOfInterval from 'date-fns/eachDayOfInterval';
 import format from 'date-fns/format';
 import Button from 'components/base/Button/view';
+import { applyDayToDate } from 'utils/applyDayToDate';
 
 const DatePicker = (props: DatePickerPrivateProps) => {
   const {
@@ -127,7 +128,7 @@ const DatePicker = (props: DatePickerPrivateProps) => {
                     : {}),
                 }}
                 onDayPress={(day) => {
-                  const newDate = new Date(day.dateString);
+                  const newDate = applyDayToDate(startDate, day);
                   // reset or start date
                   if ((startDate && endDate) || !startDate || !setEndDate) {
                     setStartDate(newDate);
