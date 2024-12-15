@@ -7,7 +7,7 @@
     "android:storybook": "ENVFILE=.env.storybook npm run android",
     "ios": "react-native run-ios --simulator=\"iPhone 14\"",
     "start": "react-native start",
-    "test": "jest ./*.unit.test.*",
+    "test": "TZ=UTC jest ./*.unit.test.*",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "generate": "plop",
     "android:debug": "npm run android:bundle-js && npm run android:build-debug-apk",
