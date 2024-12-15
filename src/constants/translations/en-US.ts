@@ -54,6 +54,7 @@ const en_US = {
   // Transactions
   TRANSACTIONS: 'Transactions',
   EXPORT: 'Export',
+  IMPORT: 'Import Transactions',
 
   // SETTINGS
   SETTINGS: 'Settings',

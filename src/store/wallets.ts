@@ -13,6 +13,7 @@ export type Wallet = {
 export type Wallets = Record<string, Wallet>;
 
 export type CreateWalletInput = Omit<Wallet, 'id' | 'createdAt' | 'updatedAt'>;
+export type ImportWalletInput = Wallet;
 
 const initialState: Wallets = {};
 
@@ -20,6 +21,15 @@ const walletsSlice = createSlice({
   name: 'wallets',
   initialState,
   reducers: {
+    importWallet(state, action: PayloadAction<ImportWalletInput>) {
+      return produce(state, (draft) => {
+        if (draft[action.payload.id]) {
+          return;
+        }
+
+        draft[action.payload.id] = action.payload;
+      });
+    },
     createWallet(state, action: PayloadAction<CreateWalletInput>) {
       return produce(state, (draft) => {
         const id = uuidv1();
@@ -55,6 +65,7 @@ export const {
   createWallet: createWalletAction,
   editWallet: editWalletAction,
   deleteWallet: deleteWalletAction,
+  importWallet: importWalletAction,
 } = walletsSlice.actions;
 
 export default walletsSlice.reducer;
