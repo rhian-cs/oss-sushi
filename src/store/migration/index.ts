@@ -29,7 +29,6 @@ const Migrations = {
             ...wallets,
             [key]: {
               ...draft.wallets[key],
-              // paidAt: draft.transactions[key].createdAt,
               order: 0,
             },
           };
