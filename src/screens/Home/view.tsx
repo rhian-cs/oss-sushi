@@ -83,6 +83,8 @@ const HomeView = (props: HomeProps) => {
   );
 
   const walletsArray = Object.keys(wallets).map((key) => wallets[key]);
+  walletsArray.sort((a, b) => a.order - b.order);
+
   const totalInitialBalance = walletsArray.reduce((accum, wallet) => {
     return accum + wallet.initialAmount;
   }, 0);
