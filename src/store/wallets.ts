@@ -8,6 +8,7 @@ export type Wallet = {
   initialAmount: number;
   createdAt: string;
   updatedAt: string;
+  order: number;
 };
 
 export type Wallets = Record<string, Wallet>;
