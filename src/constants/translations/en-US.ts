@@ -10,6 +10,7 @@ const en_US = {
   ADD_ACCOUNT: 'Add Account',
   ACCOUNT_NAME: 'Account Name',
   INITIAL_AMOUNT: 'Initial Amount',
+  ACCOUNT_ORDER: 'Order',
   CREATE_ACCOUNT: 'Create Account',
 
   // EDIT ACCOUNT

@@ -16,6 +16,7 @@ const EditWalletView = (props: EditWalletProps) => {
   const [initialAmount, setInitialAmount] = useState(
     wallet.initialAmount.toFixed(2),
   );
+  const [order, setOrder] = useState((wallet.order || 0).toString());
 
   return (
     <SafeAreaView style={styles.container}>
@@ -63,6 +64,17 @@ const EditWalletView = (props: EditWalletProps) => {
             }}
             theme={theme}
           />
+
+          <TextInput
+            containerStyle={styles.textFieldContainer}
+            translationKey="ACCOUNT_ORDER"
+            value={order}
+            maxLength={14}
+            onChangeText={(text) => setOrder(text)}
+            placeholder="0"
+            keyboardType="decimal-pad"
+            theme={theme}
+          />
         </ScrollView>
         <View style={styles.actionsContainer}>
           <Button
@@ -71,6 +83,7 @@ const EditWalletView = (props: EditWalletProps) => {
                 ...wallet,
                 label: label || 'New Wallet',
                 initialAmount: parseFloat(initialAmount) || 0,
+                order: Number(order) || 0,
               })
             }
             translationKey="UPDATE_ACCOUNT"

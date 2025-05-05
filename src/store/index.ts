@@ -35,7 +35,7 @@ export type RootState = ReturnType<typeof rootReducer>;
 
 const persistConfig = {
   key: 'root',
-  version: 2,
+  version: 3,
   storage: AsyncStorage,
   whitelist: ['theme', 'wallets', 'transactions', 'currency', 'language'],
   migrate: createMigrate(Migrations as unknown as MigrationManifest, {
